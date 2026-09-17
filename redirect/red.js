@@ -3,9 +3,11 @@ const pkgid = params.get("pkgid");
 
 if (pkgid) {
     const destination =
-        `intent://#Intent;action=android.intent.action.MAIN;` +
+        `intent://#Intent;` +
+        `action=android.intent.action.MAIN;` +
         `category=android.intent.category.LAUNCHER;` +
-        `package=${encodeURIComponent(pkgid)};end;`;
+        `package=${pkgid};` +
+        `end;`;
 
     window.location.href = destination;
 } else {
