@@ -1,8 +1,11 @@
 const params = new URLSearchParams(window.location.search);
-const destination = "intent://#Intent;package=" + params.get("pkgid") + ";end;";
+const pkgid = params.get("pkgid");
 
-if (params.has("pkgid")) {
-    const pkgid = params.get("pkgid");
+if (pkgid) {
+    const destination =
+        `intent://#Intent;action=android.intent.action.MAIN;` +
+        `category=android.intent.category.LAUNCHER;` +
+        `package=${encodeURIComponent(pkgid)};end;`;
 
     window.location.href = destination;
 } else {
